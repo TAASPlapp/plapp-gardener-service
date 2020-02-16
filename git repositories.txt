@@ -1,0 +1,6 @@
+plapp-interactionservice
+plapp-frontend-android
+plapp-gardenerservice
+plapp-auth-service
+plapp-frontend-web
+plapp-dataservice

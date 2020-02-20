@@ -3,8 +3,12 @@ package com.plappgardenerservice.controllers;
 import com.plappgardenerservice.entities.Schedule;
 import com.plappgardenerservice.services.ScheduleService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.web.bind.annotation.*;
+
+import javax.annotation.PostConstruct;
 import java.util.Date;
+import java.util.List;
 
 @RestController
 public class DataServiceController {

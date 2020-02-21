@@ -1,18 +1,16 @@
 package com.plappgardenerservice.entities;
 
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.IdClass;
-import javax.validation.constraints.NotNull;
 import java.io.Serializable;
 import java.util.Date;
 
 
 
 @Entity
-@IdClass(ScheduleID.class)
-public class Schedule {
+@IdClass(ScheduleActionID.class)
+public class ScheduleAction implements Serializable{
 
     //@GeneratedValue
     //@Id
@@ -22,23 +20,18 @@ public class Schedule {
     private long plantID;
     @Id
     private String action;
+    @Id
     private Date date;
     private int periodicity;
 
-    public Schedule() {}
+    public ScheduleAction() {}
 
-    public Schedule(long plantID, Date date, String action, int periodicity) {
+    public ScheduleAction(long plantID, Date date, String action, int periodicity) {
         this.plantID = plantID;
         this.date = date;
         this.action = action;
         this.periodicity = periodicity;
     }
-
-    /*<
-    public long getId() {
-        return id;
-    }
-     */
 
     public long getPlantID() {
         return plantID;
@@ -60,7 +53,7 @@ public class Schedule {
     public String toString() {
         return "Schedule{" +
               //  "id=" + id +
-                ", plantID=" + plantID +
+                "plantID=" + plantID +
                 ", date=" + date +
                 ", action='" + action +
                 ", periodicity='" + periodicity + '\'' +

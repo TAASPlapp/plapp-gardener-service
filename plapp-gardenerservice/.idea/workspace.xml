@@ -3,20 +3,11 @@
   <component name="ChangeListManager">
     <list default="true" id="662c9b8f-c0f2-45c5-954a-7cf915c9197d" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/plapp-gardenerservice.iml" beforeDir="false" afterPath="$PROJECT_DIR$/plapp-gardenerservice.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/plappgardenerservice/controllers/DataServiceController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/plappgardenerservice/controllers/DataServiceController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/plappgardenerservice/entities/Schedule.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/plappgardenerservice/entities/ScheduleAction.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/plappgardenerservice/entities/ScheduleID.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/plappgardenerservice/entities/ScheduleActionID.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/plappgardenerservice/notifiers/ScheduleNotifier.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/plappgardenerservice/notifiers/ScheduleNotifier.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/plappgardenerservice/repositories/ScheduleRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/plappgardenerservice/repositories/ScheduleRepository.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/plappgardenerservice/services/ScheduleService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/plappgardenerservice/services/ScheduleService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/plappgardenerservice/utils/AppConfig.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/plappgardenerservice/controllers/DataServiceController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/plappgardenerservice/controllers/DataServiceController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/plappgardenerservice/entities/Schedule.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/plappgardenerservice/entities/ScheduleID.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/plappgardenerservice/repositories/ScheduleRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/plappgardenerservice/repositories/ScheduleRepository.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/plappgardenerservice/services/ScheduleService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/plappgardenerservice/services/ScheduleService.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -49,7 +40,7 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../messaging-rabbitmq" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../TaassPrj/plapp-interactionservice" />
     <property name="settings.editor.selected.configurable" value="reference.settingsdialog.IDE.editor.colors" />
   </component>
   <component name="RunManager">
@@ -89,7 +80,8 @@
       <workItem from="1582110248785" duration="5635000" />
       <workItem from="1582131231180" duration="15327000" />
       <workItem from="1582194370634" duration="14975000" />
-      <workItem from="1582292733879" duration="9751000" />
+      <workItem from="1582292733879" duration="10084000" />
+      <workItem from="1582383272681" duration="14211000" />
     </task>
     <task id="LOCAL-00001" summary="Aggiunte repositories e services.">
       <created>1582065094302</created>
@@ -119,7 +111,14 @@
       <option name="project" value="LOCAL" />
       <updated>1582195289287</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="Inizio implementazione thread per controllo DB e invio notifiche. Configurato coda di messagi. Risolto problema data.">
+      <created>1582305221369</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1582305221369</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -128,7 +127,8 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Aggiunte repositories e services." />
     <MESSAGE value="Inizio implementazione thread per controllo DB e invio notifiche. Problema ad usare ScheduleService dal thread." />
-    <option name="LAST_COMMIT_MESSAGE" value="Inizio implementazione thread per controllo DB e invio notifiche. Problema ad usare ScheduleService dal thread." />
+    <MESSAGE value="Inizio implementazione thread per controllo DB e invio notifiche. Configurato coda di messagi. Risolto problema data." />
+    <option name="LAST_COMMIT_MESSAGE" value="Inizio implementazione thread per controllo DB e invio notifiche. Configurato coda di messagi. Risolto problema data." />
   </component>
   <component name="WindowStateProjectService">
     <state x="233" y="0" key="#Notifications" timestamp="1582065184029">
@@ -147,50 +147,50 @@
       <screen x="0" y="0" width="1280" height="680" />
     </state>
     <state x="371" y="87" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1280.680@0.0.1280.680" timestamp="1582141451602" />
-    <state x="165" y="0" key="CommitChangelistDialog2" timestamp="1582195288481">
+    <state x="125" y="0" key="CommitChangelistDialog2" timestamp="1582468950298">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state x="165" y="0" key="CommitChangelistDialog2/0.0.1280.680@0.0.1280.680" timestamp="1582195288481" />
+    <state x="125" y="0" key="CommitChangelistDialog2/0.0.1280.680@0.0.1280.680" timestamp="1582468950298" />
     <state x="146" y="50" key="DiffContextDialog" timestamp="1582150553974">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
     <state x="146" y="50" key="DiffContextDialog/0.0.1280.680@0.0.1280.680" timestamp="1582150553974" />
-    <state x="421" y="95" key="FileChooserDialogImpl" timestamp="1582231790731">
+    <state x="421" y="95" key="FileChooserDialogImpl" timestamp="1582467795484">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state x="421" y="95" key="FileChooserDialogImpl/0.0.1280.680@0.0.1280.680" timestamp="1582231790731" />
-    <state width="1237" height="163" key="GridCell.Tab.0.bottom" timestamp="1582304969452">
+    <state x="421" y="95" key="FileChooserDialogImpl/0.0.1280.680@0.0.1280.680" timestamp="1582467795484" />
+    <state width="1237" height="163" key="GridCell.Tab.0.bottom" timestamp="1582458037258">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="1237" height="163" key="GridCell.Tab.0.bottom/0.0.1280.680@0.0.1280.680" timestamp="1582304969452" />
-    <state width="1237" height="163" key="GridCell.Tab.0.center" timestamp="1582304969452">
+    <state width="1237" height="163" key="GridCell.Tab.0.bottom/0.0.1280.680@0.0.1280.680" timestamp="1582458037258" />
+    <state width="1237" height="163" key="GridCell.Tab.0.center" timestamp="1582458037257">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="1237" height="163" key="GridCell.Tab.0.center/0.0.1280.680@0.0.1280.680" timestamp="1582304969452" />
-    <state width="1237" height="163" key="GridCell.Tab.0.left" timestamp="1582304969451">
+    <state width="1237" height="163" key="GridCell.Tab.0.center/0.0.1280.680@0.0.1280.680" timestamp="1582458037257" />
+    <state width="1237" height="163" key="GridCell.Tab.0.left" timestamp="1582458037257">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="1237" height="163" key="GridCell.Tab.0.left/0.0.1280.680@0.0.1280.680" timestamp="1582304969451" />
-    <state width="1237" height="163" key="GridCell.Tab.0.right" timestamp="1582304969452">
+    <state width="1237" height="163" key="GridCell.Tab.0.left/0.0.1280.680@0.0.1280.680" timestamp="1582458037257" />
+    <state width="1237" height="163" key="GridCell.Tab.0.right" timestamp="1582458037258">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="1237" height="163" key="GridCell.Tab.0.right/0.0.1280.680@0.0.1280.680" timestamp="1582304969452" />
-    <state width="1237" height="163" key="GridCell.Tab.1.bottom" timestamp="1582304969452">
+    <state width="1237" height="163" key="GridCell.Tab.0.right/0.0.1280.680@0.0.1280.680" timestamp="1582458037258" />
+    <state width="1237" height="163" key="GridCell.Tab.1.bottom" timestamp="1582458037258">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="1237" height="163" key="GridCell.Tab.1.bottom/0.0.1280.680@0.0.1280.680" timestamp="1582304969452" />
-    <state width="1237" height="163" key="GridCell.Tab.1.center" timestamp="1582304969452">
+    <state width="1237" height="163" key="GridCell.Tab.1.bottom/0.0.1280.680@0.0.1280.680" timestamp="1582458037258" />
+    <state width="1237" height="163" key="GridCell.Tab.1.center" timestamp="1582458037258">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="1237" height="163" key="GridCell.Tab.1.center/0.0.1280.680@0.0.1280.680" timestamp="1582304969452" />
-    <state width="1237" height="163" key="GridCell.Tab.1.left" timestamp="1582304969452">
+    <state width="1237" height="163" key="GridCell.Tab.1.center/0.0.1280.680@0.0.1280.680" timestamp="1582458037258" />
+    <state width="1237" height="163" key="GridCell.Tab.1.left" timestamp="1582458037258">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="1237" height="163" key="GridCell.Tab.1.left/0.0.1280.680@0.0.1280.680" timestamp="1582304969452" />
-    <state width="1237" height="163" key="GridCell.Tab.1.right" timestamp="1582304969452">
+    <state width="1237" height="163" key="GridCell.Tab.1.left/0.0.1280.680@0.0.1280.680" timestamp="1582458037258" />
+    <state width="1237" height="163" key="GridCell.Tab.1.right" timestamp="1582458037258">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="1237" height="163" key="GridCell.Tab.1.right/0.0.1280.680@0.0.1280.680" timestamp="1582304969452" />
+    <state width="1237" height="163" key="GridCell.Tab.1.right/0.0.1280.680@0.0.1280.680" timestamp="1582458037258" />
     <state x="171" y="0" key="Maven.ArtifactSearchDialog" timestamp="1582231262645">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
@@ -199,14 +199,14 @@
       <screen x="0" y="0" width="1280" height="680" />
     </state>
     <state x="150" y="0" key="SettingsEditor/0.0.1280.680@0.0.1280.680" timestamp="1582230763809" />
-    <state x="233" y="73" width="863" height="534" key="Vcs.Push.Dialog.v2" timestamp="1582195316103">
+    <state x="233" y="73" width="863" height="534" key="Vcs.Push.Dialog.v2" timestamp="1582305280791">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state x="233" y="73" width="863" height="534" key="Vcs.Push.Dialog.v2/0.0.1280.680@0.0.1280.680" timestamp="1582195316103" />
-    <state x="337" y="164" key="com.intellij.ide.util.TipDialog" timestamp="1582292739493">
+    <state x="233" y="73" width="863" height="534" key="Vcs.Push.Dialog.v2/0.0.1280.680@0.0.1280.680" timestamp="1582305280791" />
+    <state x="337" y="164" key="com.intellij.ide.util.TipDialog" timestamp="1582383300564">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state x="337" y="164" key="com.intellij.ide.util.TipDialog/0.0.1280.680@0.0.1280.680" timestamp="1582292739493" />
+    <state x="337" y="164" key="com.intellij.ide.util.TipDialog/0.0.1280.680@0.0.1280.680" timestamp="1582383300564" />
     <state x="441" y="132" key="git4idea.merge.GitMergeDialog" timestamp="1582194753427">
       <screen x="0" y="0" width="1280" height="680" />
     </state>

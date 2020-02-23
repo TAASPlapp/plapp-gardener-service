@@ -7,6 +7,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
 
+import javax.annotation.PostConstruct;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.time.*;
@@ -22,29 +24,35 @@ public class ScheduleNotifier {
     ScheduleService scheduleService;
     @Autowired
     RabbitMQSender rabbitMQSender;
+    Clock clock;
+    long timeBeforeNotification; //in ms
+
+    @PostConstruct
+    public void init() {
+        clock = Clock.systemUTC();
+        timeBeforeNotification = 3600000; //one hour
+    }
 
     @Scheduled(fixedRate = 5000)
-    public void checkForSchedules() {
+    public void checkForSchedules() throws ParseException {
         System.out.println("Schedule Notifier online");
         List<ScheduleAction> scheduleActions = scheduleService.findAll();
 
-        SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy HH:mm:ss");
-        dateFormat.setTimeZone(TimeZone.getTimeZone("UTC"));
-        Date d = new Date();
-        System.out.println(dateFormat.format(d));
+        LocalDateTime currentTime = LocalDateTime.now(clock);
+        System.out.println("Current time: " + currentTime);
+        long currentMs = currentTime.atZone(clock.getZone()).toInstant().toEpochMilli();
+        System.out.println("Current instant: " + currentMs);
 
         for(ScheduleAction sa : scheduleActions){
-
-            System.out.println("Schedule date: " + dateFormat.format(sa.getDate()));
+            LocalDateTime scheduleActionDate = LocalDateTime.ofInstant(sa.getDate().toInstant(),clock.getZone());
+            long scheduleActionMs = scheduleActionDate.atZone(clock.getZone()).toInstant().toEpochMilli();
+            System.out.println("Schedule date: " + scheduleActionDate);
+            System.out.println("Schedule instant: " + scheduleActionMs);
+            if(scheduleActionMs - currentMs < timeBeforeNotification){
+                //rabbitMQSender.send(sa);
+                scheduleService.deleteSchedule(sa);
+            }
         }
-        /*
-        Date currentDate = new Date();
-        System.out.println(currentDate.getTime());
-        List<Schedule> schedules = scheduleService.findAll();
-        for(Schedule s : schedules){
-
-        }
-         */
 
         /*
         ScheduleAction toSend = new ScheduleAction(99,new Date(),"water",2);

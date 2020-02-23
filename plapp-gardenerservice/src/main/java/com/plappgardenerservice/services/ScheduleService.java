@@ -30,6 +30,10 @@ public class ScheduleService {
         return scheduleRepository.save(new ScheduleAction(plantID, date, action, periodicity));
     }
 
+    public void deleteSchedule(ScheduleAction toDelete){
+        scheduleRepository.delete(toDelete);
+    }
+
 
 
 }

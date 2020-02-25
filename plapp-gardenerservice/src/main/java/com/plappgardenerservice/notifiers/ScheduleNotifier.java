@@ -1,6 +1,8 @@
 package com.plappgardenerservice.notifiers;
 
+import com.plappgardenerservice.entities.Diagnosis;
 import com.plappgardenerservice.entities.ScheduleAction;
+import com.plappgardenerservice.services.DiagnosisService;
 import com.plappgardenerservice.services.RabbitMQSender;
 import com.plappgardenerservice.services.ScheduleService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,6 +25,8 @@ public class ScheduleNotifier {
     @Autowired
     ScheduleService scheduleService;
     @Autowired
+    DiagnosisService diagnosisService;
+    @Autowired
     RabbitMQSender rabbitMQSender;
     Clock clock;
     long timeBeforeNotification; //in ms
@@ -37,11 +41,17 @@ public class ScheduleNotifier {
     public void checkForSchedules() throws ParseException {
         System.out.println("Schedule Notifier online");
         List<ScheduleAction> scheduleActions = scheduleService.findAll();
+        List<Diagnosis> diagnoses = diagnosisService.findAll();
 
         LocalDateTime currentTime = LocalDateTime.now(clock);
         System.out.println("Current time: " + currentTime);
         long currentMs = currentTime.atZone(clock.getZone()).toInstant().toEpochMilli();
         System.out.println("Current instant: " + currentMs);
+
+        for(Diagnosis d : diagnoses){
+            rabbitMQSender.sendDiagnosis(d);
+            diagnosisService.deleteDiagnosis(d);
+        }
 
         for(ScheduleAction sa : scheduleActions){
             LocalDateTime scheduleActionDate = LocalDateTime.ofInstant(sa.getDate().toInstant(),clock.getZone());
@@ -49,7 +59,7 @@ public class ScheduleNotifier {
             System.out.println("Schedule date: " + scheduleActionDate);
             System.out.println("Schedule instant: " + scheduleActionMs);
             if(scheduleActionMs - currentMs < timeBeforeNotification){
-                //rabbitMQSender.send(sa);
+                rabbitMQSender.sendScheduleAction(sa);
                 scheduleService.deleteSchedule(sa);
             }
         }

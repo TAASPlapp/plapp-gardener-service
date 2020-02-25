@@ -1,5 +1,6 @@
 package com.plappgardenerservice.services;
 
+import com.plappgardenerservice.entities.Diagnosis;
 import com.plappgardenerservice.entities.ScheduleAction;
 import org.springframework.amqp.core.AmqpTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,9 +19,13 @@ public class RabbitMQSender {
     @Value("${javainuse.rabbitmq.routingkey}")
     private String routingkey;
 
-    public void send(ScheduleAction scheduleAction) {
+    public void sendScheduleAction(ScheduleAction scheduleAction) {
         rabbitTemplate.convertAndSend(exchange, routingkey, scheduleAction);
         System.out.println("Send msg = " + scheduleAction);
+    }
 
+    public void sendDiagnosis(Diagnosis diagnosis){
+        rabbitTemplate.convertAndSend(exchange, routingkey, diagnosis);
+        System.out.println("Send msg = " + diagnosis);
     }
 }

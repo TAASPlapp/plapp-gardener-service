@@ -49,8 +49,8 @@ public class DataServiceController {
         return true;
     }
 
-    public String getNNUri(){
-        return "https://plant-info-api.herokuapp.com/cnn";
+    public String getNNUri(String plantImageURL){
+        return "https://plant-info-api.herokuapp.com/cnn?="+plantImageURL;
     }
 
     public void print(String str)
@@ -68,7 +68,7 @@ public class DataServiceController {
         imageURLs.add(plantID);
         Mono<String> result = WebClient.create()
                 .get()
-                .uri(getNNUri())
+                .uri(getNNUri(plantImageURL))
                 .retrieve()
                 .bodyToMono(String.class)
                 ;

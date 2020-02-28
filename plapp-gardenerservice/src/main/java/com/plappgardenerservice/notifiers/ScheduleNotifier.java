@@ -1,7 +1,7 @@
 package com.plappgardenerservice.notifiers;
 
-import com.plappgardenerservice.entities.Diagnosis;
-import com.plappgardenerservice.entities.ScheduleAction;
+import com.plapp.entities.schedules.Diagnosis;
+import com.plapp.entities.schedules.ScheduleAction;
 import com.plappgardenerservice.services.DiagnosisService;
 import com.plappgardenerservice.services.RabbitMQSender;
 import com.plappgardenerservice.services.ScheduleService;

@@ -1,7 +1,7 @@
 package com.plappgardenerservice.services;
 
-import com.plappgardenerservice.entities.Diagnosis;
-import com.plappgardenerservice.entities.ScheduleAction;
+import com.plapp.entities.schedules.Diagnosis;
+import com.plapp.entities.schedules.ScheduleAction;
 import org.springframework.amqp.core.AmqpTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;

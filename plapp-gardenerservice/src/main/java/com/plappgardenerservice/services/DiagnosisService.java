@@ -1,9 +1,7 @@
 package com.plappgardenerservice.services;
 
-import com.plappgardenerservice.entities.Diagnosis;
-import com.plappgardenerservice.entities.ScheduleAction;
+import com.plapp.entities.schedules.Diagnosis;
 import com.plappgardenerservice.repositories.DiagnosisRepository;
-import com.plappgardenerservice.repositories.ScheduleRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -41,10 +39,5 @@ public class DiagnosisService {
         public void deleteDiagnosis(Diagnosis toDelete){
             diagnosisRepository.delete(toDelete);
         }
-
-        public Diagnosis findDiagnosisByPlantID(String plantID){
-            return diagnosisRepository.findDiagnosisByPlantID(plantID);
-        }
-
 
     }

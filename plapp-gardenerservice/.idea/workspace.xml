@@ -3,11 +3,30 @@
   <component name="ChangeListManager">
     <list default="true" id="662c9b8f-c0f2-45c5-954a-7cf915c9197d" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/plapp-gardenerservice.iml" beforeDir="false" afterPath="$PROJECT_DIR$/plapp-gardenerservice.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/plappgardenerservice/controllers/DataServiceController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/plappgardenerservice/controllers/DataServiceController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/plappgardenerservice/utils/RabbitMQConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/plappgardenerservice/utils/RabbitMQConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/plappgardenerservice/entities/Diagnosis.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/plappgardenerservice/entities/ScheduleAction.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/plappgardenerservice/entities/ScheduleActionID.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/plappgardenerservice/entities/ScheduleActionID.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/plappgardenerservice/notifiers/ScheduleNotifier.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/plappgardenerservice/notifiers/ScheduleNotifier.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/plappgardenerservice/repositories/DiagnosisRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/plappgardenerservice/repositories/DiagnosisRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/plappgardenerservice/repositories/ScheduleRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/plappgardenerservice/repositories/ScheduleRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/plappgardenerservice/services/DiagnosisService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/plappgardenerservice/services/DiagnosisService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/plappgardenerservice/services/RabbitMQSender.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/plappgardenerservice/services/RabbitMQSender.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/plappgardenerservice/services/ScheduleService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/plappgardenerservice/services/ScheduleService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/application.properties" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/plappgardenerservice/controllers/DataServiceController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/plappgardenerservice/controllers/DataServiceController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/plappgardenerservice/utils/RabbitMQConfig.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/plappgardenerservice/utils/RabbitMQConfig.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/plappgardenerservice/entities/Diagnosis.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/plappgardenerservice/entities/ScheduleAction.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/plappgardenerservice/entities/ScheduleActionID.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/plappgardenerservice/entities/ScheduleActionID.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/plappgardenerservice/notifiers/ScheduleNotifier.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/plappgardenerservice/notifiers/ScheduleNotifier.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/plappgardenerservice/repositories/DiagnosisRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/plappgardenerservice/repositories/DiagnosisRepository.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/plappgardenerservice/repositories/ScheduleRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/plappgardenerservice/repositories/ScheduleRepository.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/plappgardenerservice/services/DiagnosisService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/plappgardenerservice/services/DiagnosisService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/plappgardenerservice/services/RabbitMQSender.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/plappgardenerservice/services/RabbitMQSender.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/plappgardenerservice/services/ScheduleService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/plappgardenerservice/services/ScheduleService.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -84,6 +103,9 @@
       <workItem from="1582538941441" duration="11699000" />
       <workItem from="1582627577431" duration="13579000" />
       <workItem from="1582720995406" duration="4359000" />
+      <workItem from="1582801779970" duration="5473000" />
+      <workItem from="1582825077179" duration="6830000" />
+      <workItem from="1582886485428" duration="304000" />
     </task>
     <task id="LOCAL-00001" summary="Aggiunte repositories e services.">
       <created>1582065094302</created>
@@ -141,7 +163,14 @@
       <option name="project" value="LOCAL" />
       <updated>1582652729952</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="Fine gardener, manca solo gestione migliorata delle richieste già inviate per la diagnosi.">
+      <created>1582801891766</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1582801891767</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -160,22 +189,22 @@
       <screen x="0" y="0" width="1280" height="680" />
     </state>
     <state x="233" y="0" key="#Notifications/0.0.1280.680@0.0.1280.680" timestamp="1582065184029" />
-    <state x="446" y="48" key="#com.intellij.ide.util.MemberChooser" timestamp="1582643586432">
+    <state x="446" y="48" key="#com.intellij.ide.util.MemberChooser" timestamp="1582835051405">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state x="446" y="48" key="#com.intellij.ide.util.MemberChooser/0.0.1280.680@0.0.1280.680" timestamp="1582643586432" />
+    <state x="446" y="48" key="#com.intellij.ide.util.MemberChooser/0.0.1280.680@0.0.1280.680" timestamp="1582835051405" />
     <state x="140" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog" timestamp="1582296915734">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
     <state x="140" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/0.0.1280.680@0.0.1280.680" timestamp="1582296915734" />
-    <state x="371" y="87" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1582141451602">
+    <state x="371" y="87" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1582825549199">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state x="371" y="87" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1280.680@0.0.1280.680" timestamp="1582141451602" />
-    <state x="0" y="0" key="CommitChangelistDialog2" timestamp="1582652728837">
+    <state x="371" y="87" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1280.680@0.0.1280.680" timestamp="1582825549199" />
+    <state x="0" y="0" key="CommitChangelistDialog2" timestamp="1582801890914">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state x="0" y="0" key="CommitChangelistDialog2/0.0.1280.680@0.0.1280.680" timestamp="1582652728837" />
+    <state x="0" y="0" key="CommitChangelistDialog2/0.0.1280.680@0.0.1280.680" timestamp="1582801890914" />
     <state x="146" y="50" key="DiffContextDialog" timestamp="1582150553974">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
@@ -184,54 +213,54 @@
       <screen x="0" y="0" width="1280" height="680" />
     </state>
     <state x="421" y="95" key="FileChooserDialogImpl/0.0.1280.680@0.0.1280.680" timestamp="1582467795484" />
-    <state width="1237" height="195" key="GridCell.Tab.0.bottom" timestamp="1582747598997">
+    <state width="1237" height="193" key="GridCell.Tab.0.bottom" timestamp="1582838482194">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="1237" height="195" key="GridCell.Tab.0.bottom/0.0.1280.680@0.0.1280.680" timestamp="1582747598997" />
-    <state width="1237" height="195" key="GridCell.Tab.0.center" timestamp="1582747598996">
+    <state width="1237" height="193" key="GridCell.Tab.0.bottom/0.0.1280.680@0.0.1280.680" timestamp="1582838482194" />
+    <state width="1237" height="193" key="GridCell.Tab.0.center" timestamp="1582838482194">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="1237" height="195" key="GridCell.Tab.0.center/0.0.1280.680@0.0.1280.680" timestamp="1582747598996" />
-    <state width="1237" height="195" key="GridCell.Tab.0.left" timestamp="1582747598996">
+    <state width="1237" height="193" key="GridCell.Tab.0.center/0.0.1280.680@0.0.1280.680" timestamp="1582838482194" />
+    <state width="1237" height="193" key="GridCell.Tab.0.left" timestamp="1582838482194">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="1237" height="195" key="GridCell.Tab.0.left/0.0.1280.680@0.0.1280.680" timestamp="1582747598996" />
-    <state width="1237" height="195" key="GridCell.Tab.0.right" timestamp="1582747598996">
+    <state width="1237" height="193" key="GridCell.Tab.0.left/0.0.1280.680@0.0.1280.680" timestamp="1582838482194" />
+    <state width="1237" height="193" key="GridCell.Tab.0.right" timestamp="1582838482194">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="1237" height="195" key="GridCell.Tab.0.right/0.0.1280.680@0.0.1280.680" timestamp="1582747598996" />
-    <state width="1237" height="195" key="GridCell.Tab.1.bottom" timestamp="1582747598997">
+    <state width="1237" height="193" key="GridCell.Tab.0.right/0.0.1280.680@0.0.1280.680" timestamp="1582838482194" />
+    <state width="1237" height="193" key="GridCell.Tab.1.bottom" timestamp="1582838482195">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="1237" height="195" key="GridCell.Tab.1.bottom/0.0.1280.680@0.0.1280.680" timestamp="1582747598997" />
-    <state width="1237" height="195" key="GridCell.Tab.1.center" timestamp="1582747598997">
+    <state width="1237" height="193" key="GridCell.Tab.1.bottom/0.0.1280.680@0.0.1280.680" timestamp="1582838482195" />
+    <state width="1237" height="193" key="GridCell.Tab.1.center" timestamp="1582838482195">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="1237" height="195" key="GridCell.Tab.1.center/0.0.1280.680@0.0.1280.680" timestamp="1582747598997" />
-    <state width="1237" height="195" key="GridCell.Tab.1.left" timestamp="1582747598997">
+    <state width="1237" height="193" key="GridCell.Tab.1.center/0.0.1280.680@0.0.1280.680" timestamp="1582838482195" />
+    <state width="1237" height="193" key="GridCell.Tab.1.left" timestamp="1582838482194">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="1237" height="195" key="GridCell.Tab.1.left/0.0.1280.680@0.0.1280.680" timestamp="1582747598997" />
-    <state width="1237" height="195" key="GridCell.Tab.1.right" timestamp="1582747598997">
+    <state width="1237" height="193" key="GridCell.Tab.1.left/0.0.1280.680@0.0.1280.680" timestamp="1582838482194" />
+    <state width="1237" height="193" key="GridCell.Tab.1.right" timestamp="1582838482195">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="1237" height="195" key="GridCell.Tab.1.right/0.0.1280.680@0.0.1280.680" timestamp="1582747598997" />
-    <state x="171" y="0" key="Maven.ArtifactSearchDialog" timestamp="1582472947059">
+    <state width="1237" height="193" key="GridCell.Tab.1.right/0.0.1280.680@0.0.1280.680" timestamp="1582838482195" />
+    <state x="171" y="0" key="Maven.ArtifactSearchDialog" timestamp="1582825798371">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state x="171" y="0" key="Maven.ArtifactSearchDialog/0.0.1280.680@0.0.1280.680" timestamp="1582472947059" />
+    <state x="171" y="0" key="Maven.ArtifactSearchDialog/0.0.1280.680@0.0.1280.680" timestamp="1582825798371" />
     <state x="150" y="0" key="SettingsEditor" timestamp="1582230763809">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
     <state x="150" y="0" key="SettingsEditor/0.0.1280.680@0.0.1280.680" timestamp="1582230763809" />
-    <state x="233" y="73" width="863" height="534" key="Vcs.Push.Dialog.v2" timestamp="1582652738923">
+    <state x="233" y="73" width="863" height="534" key="Vcs.Push.Dialog.v2" timestamp="1582801907858">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state x="233" y="73" width="863" height="534" key="Vcs.Push.Dialog.v2/0.0.1280.680@0.0.1280.680" timestamp="1582652738923" />
-    <state x="337" y="164" key="com.intellij.ide.util.TipDialog" timestamp="1582801780191">
+    <state x="233" y="73" width="863" height="534" key="Vcs.Push.Dialog.v2/0.0.1280.680@0.0.1280.680" timestamp="1582801907858" />
+    <state x="337" y="164" key="com.intellij.ide.util.TipDialog" timestamp="1582886593236">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state x="337" y="164" key="com.intellij.ide.util.TipDialog/0.0.1280.680@0.0.1280.680" timestamp="1582801780191" />
+    <state x="337" y="164" key="com.intellij.ide.util.TipDialog/0.0.1280.680@0.0.1280.680" timestamp="1582886593236" />
     <state x="441" y="132" key="git4idea.merge.GitMergeDialog" timestamp="1582194753427">
       <screen x="0" y="0" width="1280" height="680" />
     </state>

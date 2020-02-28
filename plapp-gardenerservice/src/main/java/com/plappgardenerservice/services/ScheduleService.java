@@ -1,6 +1,6 @@
 package com.plappgardenerservice.services;
 
-import com.plappgardenerservice.entities.ScheduleAction;
+import com.plapp.entities.schedules.ScheduleAction;
 import com.plappgardenerservice.repositories.ScheduleRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -26,8 +26,9 @@ public class ScheduleService {
         return scheduleRepository.findAll();
     }
 
-    public ScheduleAction createSchedule(long plantID, Date date, String action, int periodicity) {
-        return scheduleRepository.save(new ScheduleAction(plantID, date, action, periodicity));
+    public ScheduleAction createSchedule(long userId, long plantId, Date date, String action, int periodicity, String additionalInfo) {
+        ScheduleAction toSave = new ScheduleAction(userId, plantId, date, action, periodicity, additionalInfo);
+        return scheduleRepository.save(toSave);
     }
 
     public void deleteSchedule(ScheduleAction toDelete){

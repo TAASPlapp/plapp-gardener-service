@@ -1,8 +1,8 @@
 package com.plappgardenerservice.controllers;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.plappgardenerservice.entities.Diagnosis;
-import com.plappgardenerservice.entities.ScheduleAction;
+import com.plapp.entities.schedules.Diagnosis;
+import com.plapp.entities.schedules.ScheduleAction;
 import com.plappgardenerservice.services.DiagnosisService;
 import com.plappgardenerservice.services.ScheduleService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -37,7 +37,7 @@ public class DataServiceController {
      * the insertion of a new schedule (e.g. water, prune, ...)
      */
     @PutMapping("/add_schedule")
-    boolean addSchedule(@RequestParam long plantID, @RequestParam Date date, @RequestParam String action, @RequestParam int periodicity) {
+    boolean addSchedule(@RequestParam long userId, @RequestParam long plantId, @RequestParam Date date, @RequestParam String action, @RequestParam int periodicity, @RequestParam String additionalInfo) {
         /*
         System.out.println("INVOKED");
         System.out.println(plantID);
@@ -45,7 +45,7 @@ public class DataServiceController {
         System.out.println(date);
         System.out.println(periodicity);
          */
-        ScheduleAction newScheduleAction = scheduleService.createSchedule(plantID, date, action, periodicity);
+        ScheduleAction newScheduleAction = scheduleService.createSchedule(userId, plantId, date, action, periodicity, additionalInfo);
         return true;
     }
 
@@ -53,19 +53,14 @@ public class DataServiceController {
         return "https://plant-info-api.herokuapp.com/cnn?="+plantImageURL;
     }
 
-    public void print(String str)
-    {
-        System.out.println(str);
-    }
-
     @GetMapping(value = "/diagnose_image")
-    public String getPlantDiagnosis(String plantImageURL, String plantID) throws InterruptedException, IOException {
+    public String getPlantDiagnosis(String plantImageURL, String plantId) throws InterruptedException, IOException {
         System.out.println("Starting NON-BLOCKING Controller!");
         //if there's already a diagnosis request for a given plant
-        if(imageURLs.contains(plantID)){
+        if(imageURLs.contains(plantId)){
             return "You have already sent a diagnosis request for this plant!";
         }
-        imageURLs.add(plantID);
+        imageURLs.add(plantId);
         Mono<String> result = WebClient.create()
                 .get()
                 .uri(getNNUri(plantImageURL))

@@ -1,13 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="662c9b8f-c0f2-45c5-954a-7cf915c9197d" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_github_TAASPlapp_plapp_data_entities_0dc468b.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/META-INF/orm.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/META-INF/persistence.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/META-INF/orm.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/META-INF/persistence.xml" afterDir="false" />
+    <list default="true" id="662c9b8f-c0f2-45c5-954a-7cf915c9197d" name="Default Changelist" comment="Aggiornamento 22/03">
+      <change afterPath="$PROJECT_DIR$/../plapp-notificationservice/src/main/resources/META-INF/orm.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../plapp-notificationservice/src/main/resources/META-INF/persistence.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__com_github_TAASPlapp_plapp_data_entities_0dc468b.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/plapp-gardenerservice.iml" beforeDir="false" afterPath="$PROJECT_DIR$/plapp-gardenerservice.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/plappgardenerservice/PlappGardenerServiceApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/plappgardenerservice/PlappGardenerServiceApplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/plappgardenerservice/controllers/DataServiceController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/plappgardenerservice/controllers/DataServiceController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/plappgardenerservice/entities/ScheduleActionID.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/plappgardenerservice/notifiers/ScheduleNotifier.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/plappgardenerservice/notifiers/ScheduleNotifier.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/plappgardenerservice/repositories/ScheduleRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/plappgardenerservice/repositories/ScheduleRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/plappgardenerservice/services/ScheduleService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/plappgardenerservice/services/ScheduleService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/META-INF/orm.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/META-INF/orm.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/META-INF/orm.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/META-INF/orm.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/plappgardenerservice/PlappGardenerServiceApplication.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/plappgardenerservice/PlappGardenerServiceApplication.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/plappgardenerservice/controllers/DataServiceController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/plappgardenerservice/controllers/DataServiceController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/plappgardenerservice/entities/ScheduleActionID.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/plappgardenerservice/notifiers/ScheduleNotifier.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/plappgardenerservice/notifiers/ScheduleNotifier.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/plappgardenerservice/repositories/ScheduleRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/plappgardenerservice/repositories/ScheduleRepository.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/plappgardenerservice/services/ScheduleService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/plappgardenerservice/services/ScheduleService.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -19,6 +33,7 @@
       <list>
         <option value="Interface" />
         <option value="Class" />
+        <option value="JUnit5 Test Class" />
       </list>
     </option>
   </component>
@@ -39,8 +54,18 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../TaassPrj/plapp-interactionservice" />
+    <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary" value="JUnit5" />
+    <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5" value="" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../plapp-notificationservice" />
     <property name="settings.editor.selected.configurable" value="reference.settingsdialog.IDE.editor.colors" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CreateTestDialog.RecentsKey">
+      <recent name="com.plappgardenerservice.notifiers" />
+    </key>
+    <key name="CreateTestDialog.Recents.Supers">
+      <recent name="" />
+    </key>
   </component>
   <component name="RunManager">
     <configuration name="PlappGardenerServiceApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
@@ -86,7 +111,12 @@
       <workItem from="1582720995406" duration="4359000" />
       <workItem from="1582801779970" duration="5473000" />
       <workItem from="1582825077179" duration="6830000" />
-      <workItem from="1582886485428" duration="642000" />
+      <workItem from="1582886485428" duration="9878000" />
+      <workItem from="1582972263262" duration="8945000" />
+      <workItem from="1583059202193" duration="17762000" />
+      <workItem from="1583421194628" duration="3048000" />
+      <workItem from="1584886888221" duration="326000" />
+      <workItem from="1584887262113" duration="3864000" />
     </task>
     <task id="LOCAL-00001" summary="Aggiunte repositories e services.">
       <created>1582065094302</created>
@@ -158,7 +188,14 @@
       <option name="project" value="LOCAL" />
       <updated>1582886932679</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="Gardener con entities centralizzate, eccezione quando si invia una ScheduleAction.">
+      <created>1582887346313</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1582887346313</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -171,7 +208,8 @@
     <MESSAGE value="Implementato invio su coda di messaggi delle ScheduleAction, e relativa eliminazione dal db. Manca richiesta asincrona per diagnosi su rete neurale." />
     <MESSAGE value="Fine gardener, manca solo gestione migliorata delle richieste già inviate per la diagnosi." />
     <MESSAGE value="Gardener con entities centralizzate, eccezione quando si invia una ScheduleAction." />
-    <option name="LAST_COMMIT_MESSAGE" value="Gardener con entities centralizzate, eccezione quando si invia una ScheduleAction." />
+    <MESSAGE value="Aggiornamento 22/03" />
+    <option name="LAST_COMMIT_MESSAGE" value="Aggiornamento 22/03" />
   </component>
   <component name="WindowStateProjectService">
     <state x="233" y="0" key="#Notifications" timestamp="1582065184029">
@@ -190,50 +228,54 @@
       <screen x="0" y="0" width="1280" height="680" />
     </state>
     <state x="371" y="87" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1280.680@0.0.1280.680" timestamp="1582825549199" />
-    <state x="0" y="0" key="CommitChangelistDialog2" timestamp="1582886930923">
+    <state x="389" y="64" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1" timestamp="1582987393536">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state x="0" y="0" key="CommitChangelistDialog2/0.0.1280.680@0.0.1280.680" timestamp="1582886930923" />
+    <state x="389" y="64" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1/0.0.1280.680@0.0.1280.680" timestamp="1582987393536" />
+    <state x="0" y="0" key="CommitChangelistDialog2" timestamp="1584891045618">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state x="0" y="0" key="CommitChangelistDialog2/0.0.1280.680@0.0.1280.680" timestamp="1584891045618" />
     <state x="146" y="50" key="DiffContextDialog" timestamp="1582150553974">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
     <state x="146" y="50" key="DiffContextDialog/0.0.1280.680@0.0.1280.680" timestamp="1582150553974" />
-    <state x="421" y="95" key="FileChooserDialogImpl" timestamp="1582467795484">
+    <state x="421" y="95" key="FileChooserDialogImpl" timestamp="1584887272340">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state x="421" y="95" key="FileChooserDialogImpl/0.0.1280.680@0.0.1280.680" timestamp="1582467795484" />
-    <state width="1237" height="193" key="GridCell.Tab.0.bottom" timestamp="1582887226996">
+    <state x="421" y="95" key="FileChooserDialogImpl/0.0.1280.680@0.0.1280.680" timestamp="1584887272340" />
+    <state width="1237" height="193" key="GridCell.Tab.0.bottom" timestamp="1584891045645">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="1237" height="193" key="GridCell.Tab.0.bottom/0.0.1280.680@0.0.1280.680" timestamp="1582887226996" />
-    <state width="1237" height="193" key="GridCell.Tab.0.center" timestamp="1582887226996">
+    <state width="1237" height="193" key="GridCell.Tab.0.bottom/0.0.1280.680@0.0.1280.680" timestamp="1584891045645" />
+    <state width="1237" height="193" key="GridCell.Tab.0.center" timestamp="1584891045645">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="1237" height="193" key="GridCell.Tab.0.center/0.0.1280.680@0.0.1280.680" timestamp="1582887226996" />
-    <state width="1237" height="193" key="GridCell.Tab.0.left" timestamp="1582887226996">
+    <state width="1237" height="193" key="GridCell.Tab.0.center/0.0.1280.680@0.0.1280.680" timestamp="1584891045645" />
+    <state width="1237" height="193" key="GridCell.Tab.0.left" timestamp="1584891045645">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="1237" height="193" key="GridCell.Tab.0.left/0.0.1280.680@0.0.1280.680" timestamp="1582887226996" />
-    <state width="1237" height="193" key="GridCell.Tab.0.right" timestamp="1582887226996">
+    <state width="1237" height="193" key="GridCell.Tab.0.left/0.0.1280.680@0.0.1280.680" timestamp="1584891045645" />
+    <state width="1237" height="193" key="GridCell.Tab.0.right" timestamp="1584891045645">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="1237" height="193" key="GridCell.Tab.0.right/0.0.1280.680@0.0.1280.680" timestamp="1582887226996" />
-    <state width="1237" height="193" key="GridCell.Tab.1.bottom" timestamp="1582887226997">
+    <state width="1237" height="193" key="GridCell.Tab.0.right/0.0.1280.680@0.0.1280.680" timestamp="1584891045645" />
+    <state width="1237" height="193" key="GridCell.Tab.1.bottom" timestamp="1584891045645">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="1237" height="193" key="GridCell.Tab.1.bottom/0.0.1280.680@0.0.1280.680" timestamp="1582887226997" />
-    <state width="1237" height="193" key="GridCell.Tab.1.center" timestamp="1582887226996">
+    <state width="1237" height="193" key="GridCell.Tab.1.bottom/0.0.1280.680@0.0.1280.680" timestamp="1584891045645" />
+    <state width="1237" height="193" key="GridCell.Tab.1.center" timestamp="1584891045645">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="1237" height="193" key="GridCell.Tab.1.center/0.0.1280.680@0.0.1280.680" timestamp="1582887226996" />
-    <state width="1237" height="193" key="GridCell.Tab.1.left" timestamp="1582887226996">
+    <state width="1237" height="193" key="GridCell.Tab.1.center/0.0.1280.680@0.0.1280.680" timestamp="1584891045645" />
+    <state width="1237" height="193" key="GridCell.Tab.1.left" timestamp="1584891045645">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="1237" height="193" key="GridCell.Tab.1.left/0.0.1280.680@0.0.1280.680" timestamp="1582887226996" />
-    <state width="1237" height="193" key="GridCell.Tab.1.right" timestamp="1582887226997">
+    <state width="1237" height="193" key="GridCell.Tab.1.left/0.0.1280.680@0.0.1280.680" timestamp="1584891045645" />
+    <state width="1237" height="193" key="GridCell.Tab.1.right" timestamp="1584891045645">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="1237" height="193" key="GridCell.Tab.1.right/0.0.1280.680@0.0.1280.680" timestamp="1582887226997" />
+    <state width="1237" height="193" key="GridCell.Tab.1.right/0.0.1280.680@0.0.1280.680" timestamp="1584891045645" />
     <state x="171" y="0" key="Maven.ArtifactSearchDialog" timestamp="1582825798371">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
@@ -242,14 +284,18 @@
       <screen x="0" y="0" width="1280" height="680" />
     </state>
     <state x="150" y="0" key="SettingsEditor/0.0.1280.680@0.0.1280.680" timestamp="1582230763809" />
-    <state x="233" y="73" width="863" height="534" key="Vcs.Push.Dialog.v2" timestamp="1582887304586">
+    <state x="233" y="73" width="863" height="534" key="Vcs.Push.Dialog.v2" timestamp="1582887358333">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state x="233" y="73" width="863" height="534" key="Vcs.Push.Dialog.v2/0.0.1280.680@0.0.1280.680" timestamp="1582887304586" />
-    <state x="337" y="164" key="com.intellij.ide.util.TipDialog" timestamp="1582886593236">
+    <state x="233" y="73" width="863" height="534" key="Vcs.Push.Dialog.v2/0.0.1280.680@0.0.1280.680" timestamp="1582887358333" />
+    <state x="337" y="164" key="com.intellij.ide.util.TipDialog" timestamp="1584887265982">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state x="337" y="164" key="com.intellij.ide.util.TipDialog/0.0.1280.680@0.0.1280.680" timestamp="1582886593236" />
+    <state x="337" y="164" key="com.intellij.ide.util.TipDialog/0.0.1280.680@0.0.1280.680" timestamp="1584887265982" />
+    <state x="404" y="59" key="com.intellij.testIntegration.createTest.CreateTestDialog" timestamp="1582987779490">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state x="404" y="59" key="com.intellij.testIntegration.createTest.CreateTestDialog/0.0.1280.680@0.0.1280.680" timestamp="1582987779490" />
     <state x="441" y="132" key="git4idea.merge.GitMergeDialog" timestamp="1582194753427">
       <screen x="0" y="0" width="1280" height="680" />
     </state>

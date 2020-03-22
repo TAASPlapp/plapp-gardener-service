@@ -5,6 +5,7 @@ import com.plapp.entities.schedules.ScheduleAction;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface ScheduleRepository extends JpaRepository<ScheduleAction, Integer> {
+public interface ScheduleRepository extends JpaRepository<ScheduleAction, Long> {
 
 }
+

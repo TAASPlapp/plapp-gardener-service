@@ -26,15 +26,12 @@ public class ScheduleService {
         return scheduleRepository.findAll();
     }
 
-    public ScheduleAction createSchedule(long userId, long plantId, Date date, String action, int periodicity, String additionalInfo) {
-        ScheduleAction toSave = new ScheduleAction(userId, plantId, date, action, periodicity, additionalInfo);
-        return scheduleRepository.save(toSave);
+    public ScheduleAction createSchedule(ScheduleAction scheduleAction) {
+        return scheduleRepository.save(scheduleAction);
     }
 
     public void deleteSchedule(ScheduleAction toDelete){
         scheduleRepository.delete(toDelete);
     }
-
-
 
 }

@@ -11,6 +11,7 @@ import javax.annotation.PostConstruct;
 import java.util.List;
 
 @Service
+@Transactional
 public class ScheduleService {
 
     @Autowired
@@ -27,6 +28,10 @@ public class ScheduleService {
 
     public ScheduleAction createSchedule(ScheduleAction scheduleAction) {
         return scheduleRepository.save(scheduleAction);
+    }
+
+    public void deleteSchedule(ScheduleAction toDelete){
+        scheduleRepository.delete(toDelete);
     }
 
     public void deleteSchedule(long plantId){

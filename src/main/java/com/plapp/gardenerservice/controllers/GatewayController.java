@@ -1,10 +1,10 @@
-package com.plappgardenerservice.controllers;
+package com.plapp.gardenerservice.controllers;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.plapp.entities.schedules.Diagnosis;
 import com.plapp.entities.schedules.ScheduleAction;
-import com.plappgardenerservice.services.DiagnosisService;
-import com.plappgardenerservice.services.ScheduleService;
+import com.plapp.gardenerservice.services.DiagnosisService;
+import com.plapp.gardenerservice.services.ScheduleService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.reactive.function.client.WebClient;
@@ -13,7 +13,6 @@ import javax.annotation.PostConstruct;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.HashSet;
 import java.util.List;
 
 @RestController

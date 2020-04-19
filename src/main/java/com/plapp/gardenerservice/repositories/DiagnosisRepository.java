@@ -1,4 +1,4 @@
-package com.plappgardenerservice.repositories;
+package com.plapp.gardenerservice.repositories;
 
 import com.plapp.entities.schedules.Diagnosis;
 import org.springframework.data.jpa.repository.JpaRepository;

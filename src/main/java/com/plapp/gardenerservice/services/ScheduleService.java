@@ -1,14 +1,13 @@
-package com.plappgardenerservice.services;
+package com.plapp.gardenerservice.services;
 
 import com.plapp.entities.schedules.ScheduleAction;
-import com.plappgardenerservice.repositories.ScheduleRepository;
+import com.plapp.gardenerservice.repositories.ScheduleRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import javax.annotation.PostConstruct;
 
 
-import java.util.Date;
 import java.util.List;
 
 @Service

@@ -1,10 +1,10 @@
-package com.plappgardenerservice.notifiers;
+package com.plapp.gardenerservice.notifiers;
 
 import com.plapp.entities.schedules.Diagnosis;
 import com.plapp.entities.schedules.ScheduleAction;
-import com.plappgardenerservice.services.DiagnosisService;
-import com.plappgardenerservice.services.RabbitMQSender;
-import com.plappgardenerservice.services.ScheduleService;
+import com.plapp.gardenerservice.services.DiagnosisService;
+import com.plapp.gardenerservice.services.RabbitMQSender;
+import com.plapp.gardenerservice.services.ScheduleService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;

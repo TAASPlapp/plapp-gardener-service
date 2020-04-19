@@ -1,4 +1,4 @@
-package com.plappgardenerservice.utils;
+package com.plapp.gardenerservice.utils;
 
 import org.springframework.amqp.core.*;
 import org.springframework.amqp.rabbit.connection.ConnectionFactory;

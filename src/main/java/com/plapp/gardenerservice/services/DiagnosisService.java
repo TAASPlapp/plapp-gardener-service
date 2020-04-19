@@ -1,7 +1,7 @@
-package com.plappgardenerservice.services;
+package com.plapp.gardenerservice.services;
 
 import com.plapp.entities.schedules.Diagnosis;
-import com.plappgardenerservice.repositories.DiagnosisRepository;
+import com.plapp.gardenerservice.repositories.DiagnosisRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;

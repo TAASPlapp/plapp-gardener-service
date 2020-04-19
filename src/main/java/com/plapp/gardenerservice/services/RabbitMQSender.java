@@ -1,4 +1,4 @@
-package com.plappgardenerservice.services;
+package com.plapp.gardenerservice.services;
 
 import com.plapp.entities.schedules.Diagnosis;
 import com.plapp.entities.schedules.ScheduleAction;

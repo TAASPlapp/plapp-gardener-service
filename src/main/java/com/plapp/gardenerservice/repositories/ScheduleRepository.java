@@ -1,4 +1,4 @@
-package com.plappgardenerservice.repositories;
+package com.plapp.gardenerservice.repositories;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import com.plapp.entities.schedules.ScheduleAction;

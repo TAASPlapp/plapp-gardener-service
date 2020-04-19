@@ -65,7 +65,7 @@ public class ScheduleNotifier {
                     scheduleService.createSchedule(updatedScheduleAction);
                 }
                 rabbitMQSender.sendScheduleAction(sa);
-                scheduleService.deleteSchedule(sa);
+                scheduleService.deleteSchedule(sa.getPlantId());
             }
         }
     }

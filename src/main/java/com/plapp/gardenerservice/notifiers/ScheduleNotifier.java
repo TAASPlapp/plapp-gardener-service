@@ -8,6 +8,8 @@ import com.plapp.gardenerservice.services.ScheduleService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
+import org.springframework.transaction.annotation.Transactional;
+
 import javax.annotation.PostConstruct;
 import java.text.ParseException;
 import java.time.*;
@@ -18,6 +20,7 @@ import java.util.List;
  *  This class implements a thread checking for schedules action to be notified to the user
  */
 @Component
+@Transactional
 public class ScheduleNotifier {
 
     @Autowired
@@ -58,14 +61,17 @@ public class ScheduleNotifier {
             System.out.println("Schedule date: " + scheduleActionDate);
             System.out.println("Schedule instant: " + scheduleActionMs);
             if(scheduleActionMs - currentMs < timeBeforeNotification){
+                System.out.println("To Update and/or Delete schedule");
                 if(sa.getPeriodicity() > 0){
+                    System.out.println("Periodicity: " + sa.getPeriodicity());
                     LocalDateTime updatedScheduleActionDate = scheduleActionDate.plusDays(sa.getPeriodicity());
                     Date date = Date.from(updatedScheduleActionDate.atZone(ZoneId.systemDefault()).toInstant());
                     ScheduleAction updatedScheduleAction = new ScheduleAction(sa.getUserId(),sa.getPlantId(),date,sa.getAction(),sa.getPeriodicity(),sa.getAdditionalInfo());
+                    System.out.println(updatedScheduleAction);
                     scheduleService.createSchedule(updatedScheduleAction);
                 }
                 rabbitMQSender.sendScheduleAction(sa);
-                scheduleService.deleteSchedule(sa.getPlantId());
+                scheduleService.deleteSchedule(sa);
             }
         }
     }

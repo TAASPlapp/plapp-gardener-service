@@ -11,10 +11,13 @@ import org.springframework.web.reactive.function.client.WebClient;
 import reactor.core.publisher.Mono;
 import javax.annotation.PostConstruct;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashSet;
+import java.util.List;
 
 @RestController
-public class DataServiceController {
+public class GatewayController {
 
     @Autowired
     private ScheduleService scheduleService;
@@ -22,21 +25,20 @@ public class DataServiceController {
     private DiagnosisService diagnosisService;
 
     private ObjectMapper objectMapper;
-    private HashSet<String> imageURLs;
+    private final List<String> possibleActions = new ArrayList<>(Arrays.asList(new String[]{"Potatura","Innaffiatura","Concimazione"}));
 
     @PostConstruct
     public void init(){
         objectMapper = new ObjectMapper();
-        imageURLs = new HashSet<>();
     }
 
     /* This method is invoked whenever a user requests
      * the insertion of a new schedule (e.g. water, prune, ...)
      */
     @PutMapping("gardener/{plantId}/schedule/add")
-    boolean addSchedule(@RequestBody ScheduleAction scheduleAction) {
+    ScheduleAction addScheduleAction(@RequestBody ScheduleAction scheduleAction) {
         ScheduleAction newScheduleAction = scheduleService.createSchedule(scheduleAction);
-        return true;
+        return newScheduleAction;
     }
 
     public String getNNUri(String plantImageURL){
@@ -62,6 +64,19 @@ public class DataServiceController {
         return "Diagnosis is processing. You will receive a notification with the results ASAP.";
     }
 
+    @GetMapping("gardener/{plantId}/schedule/remove")
+    void removeScheduleAction(long plantId){
+        scheduleService.deleteSchedule(plantId);
+    }
 
+    @GetMapping("gardener/{plantId}/schedule/getAll")
+    List<ScheduleAction> getSchedule(long plantId){
+        return scheduleService.findAllByPlantId(plantId);
+    }
+
+    @GetMapping(value = "gardener/actions")
+    List<String> getActions(){
+        return possibleActions;
+    }
 
 }

@@ -6,11 +6,15 @@ import com.plapp.entities.schedules.ScheduleAction;
 import com.plapp.gardenerservice.services.DiagnosisService;
 import com.plapp.gardenerservice.services.ScheduleService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpMethod;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.reactive.function.BodyInserters;
 import org.springframework.web.reactive.function.client.WebClient;
 import reactor.core.publisher.Mono;
 import javax.annotation.PostConstruct;
 import java.io.IOException;
+import java.io.UnsupportedEncodingException;
+import java.net.URLEncoder;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -40,22 +44,31 @@ public class GatewayController {
         return newScheduleAction;
     }
 
-    public String getNNUri(String plantImageURL){
-        return "https://plant-info-api.herokuapp.com/cnn?="+plantImageURL;
-    }
-
     @GetMapping(value = "gardener/{plantId}/diagnose")
     public String getPlantDiagnosis(String plantImageURL, String plantId) throws InterruptedException, IOException {
         Mono<String> result = WebClient.create()
                 .get()
-                .uri(getNNUri(plantImageURL))
+                .uri(uriBuilder -> {
+                    try {
+                        return uriBuilder.scheme("https")
+                            .host("plapp-diagnosis-service.herokuapp.com")
+                            .path("diagnose")
+                            .queryParam("url", URLEncoder.encode(plantImageURL, "UTF-8"))
+                            .build();
+                    } catch (UnsupportedEncodingException e) {
+                        e.printStackTrace();
+                        return null;
+                    }
+                })
                 .retrieve()
-                .bodyToMono(String.class)
-                ;
+                .bodyToMono(String.class);
+
         result.subscribe(diagnosis -> {
             try {
                 System.out.println(diagnosis);
-                diagnosisService.createDiagnosis(objectMapper.readValue(diagnosis, Diagnosis.class));
+                Diagnosis plantDiagnosis = objectMapper.readValue(diagnosis, Diagnosis.class);
+                plantDiagnosis.setPlantId(plantId);
+                diagnosisService.createDiagnosis(plantDiagnosis);
             } catch (IOException e) {
                 e.printStackTrace();
             }

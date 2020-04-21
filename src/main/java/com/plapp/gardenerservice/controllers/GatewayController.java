@@ -38,13 +38,13 @@ public class GatewayController {
     /* This method is invoked whenever a user requests
      * the insertion of a new schedule (e.g. water, prune, ...)
      */
-    @PutMapping("{plantId}/schedule/add")
+    @PutMapping("/{plantId}/schedule/add")
     ScheduleAction addScheduleAction(@RequestBody ScheduleAction scheduleAction) {
         ScheduleAction newScheduleAction = scheduleService.createSchedule(scheduleAction);
         return newScheduleAction;
     }
 
-    @GetMapping("diagnose")
+    @GetMapping("/diagnose")
     public Diagnosis getPlantDiagnosis(String plantImageURL) {
         RestTemplate restTemplate = new RestTemplate();
         return restTemplate.getForObject(
@@ -54,7 +54,7 @@ public class GatewayController {
         );
     }
 
-    @GetMapping("{plantId}/diagnose-async")
+    @GetMapping("/{plantId}/diagnose-async")
     public void getPlantDiagnosisAsync(@PathVariable  String plantId, String plantImageURL) throws InterruptedException, IOException {
         Mono<Diagnosis> result = WebClient.create()
                 .get()
@@ -81,17 +81,17 @@ public class GatewayController {
         });
     }
 
-    @GetMapping("{plantId}/schedule/remove")
+    @GetMapping("/{plantId}/schedule/remove")
     void removeScheduleAction(long plantId){
         scheduleService.deleteSchedule(plantId);
     }
 
-    @GetMapping("{plantId}/schedule/getAll")
+    @GetMapping("/{plantId}/schedule/getAll")
     List<ScheduleAction> getSchedule(long plantId){
         return scheduleService.findAllByPlantId(plantId);
     }
 
-    @GetMapping("actions")
+    @GetMapping("/actions")
     List<String> getActions(){
         return possibleActions;
     }

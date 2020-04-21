@@ -45,12 +45,12 @@ public class GatewayController {
     }
 
     @GetMapping("diagnose")
-    public Diagnosis getPlantDiagnosis(String url) {
+    public Diagnosis getPlantDiagnosis(String plantImageURL) {
         RestTemplate restTemplate = new RestTemplate();
         return restTemplate.getForObject(
                 "https://plapp-diagnosis-service.herokuapp.com",
                 Diagnosis.class,
-                url
+                plantImageURL
         );
     }
 

@@ -23,7 +23,7 @@ import java.util.Arrays;
 import java.util.List;
 
 @RestController
-@RequestMapping("gardener")
+@RequestMapping("/gardener")
 @RequiredArgsConstructor
 public class GatewayController {
 

@@ -78,12 +78,12 @@ public class GatewayController {
     }
 
     @GetMapping("/{plantId}/schedule/remove")
-    void removeScheduleAction(long plantId){
+    void removeScheduleAction(Long plantId){
         scheduleService.deleteSchedule(plantId);
     }
 
     @GetMapping("/{plantId}/schedule/getAll")
-    List<ScheduleAction> getSchedule(long plantId){
+    List<ScheduleAction> getSchedule(Long plantId){
         return scheduleService.findAllByPlantId(plantId);
     }
 

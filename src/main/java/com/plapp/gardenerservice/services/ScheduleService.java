@@ -2,6 +2,7 @@ package com.plapp.gardenerservice.services;
 
 import com.plapp.entities.schedules.ScheduleAction;
 import com.plapp.gardenerservice.repositories.ScheduleRepository;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -11,16 +12,10 @@ import javax.annotation.PostConstruct;
 import java.util.List;
 
 @Service
-@Transactional
+@RequiredArgsConstructor
 public class ScheduleService {
 
-    @Autowired
-    private ScheduleRepository scheduleRepository;
-
-    @Transactional
-    @PostConstruct
-    public void init() {
-    }
+    private final ScheduleRepository scheduleRepository;
 
     public List<ScheduleAction> findAll() {
         return scheduleRepository.findAll();

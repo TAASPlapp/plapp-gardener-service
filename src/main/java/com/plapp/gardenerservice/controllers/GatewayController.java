@@ -40,7 +40,7 @@ public class GatewayController {
      * the insertion of a new schedule (e.g. water, prune, ...)
      */
     @PutMapping("/{plantId}/schedule/add")
-    ScheduleAction addScheduleAction(@RequestBody ScheduleAction scheduleAction) {
+    ScheduleAction addScheduleAction(@PathVariable Long plantId, @RequestBody ScheduleAction scheduleAction) {
         ScheduleAction newScheduleAction = scheduleService.createSchedule(scheduleAction);
         return newScheduleAction;
     }
@@ -58,7 +58,7 @@ public class GatewayController {
     }
 
     @PostMapping("/{plantId}/diagnose-async")
-    public void getPlantDiagnosisAsync(@PathVariable  String plantId, @RequestBody Map<String, String> params) throws InterruptedException, IOException {
+    public void getPlantDiagnosisAsync(@PathVariable String plantId, @RequestBody Map<String, String> params) throws InterruptedException, IOException {
         Mono<Diagnosis> result = WebClient.create()
                 .get()
                 .uri(uriBuilder -> uriBuilder.scheme("https")
@@ -78,12 +78,12 @@ public class GatewayController {
     }
 
     @GetMapping("/{plantId}/schedule/remove")
-    void removeScheduleAction(Long plantId){
+    void removeScheduleAction(@PathVariable Long plantId){
         scheduleService.deleteSchedule(plantId);
     }
 
     @GetMapping("/{plantId}/schedule/getAll")
-    List<ScheduleAction> getSchedule(Long plantId){
+    List<ScheduleAction> getSchedule(@PathVariable Long plantId){
         return scheduleService.findAllByPlantId(plantId);
     }
 

@@ -23,8 +23,8 @@ import java.util.Arrays;
 import java.util.List;
 
 @RestController
-@RequestMapping("/gardener")
 @RequiredArgsConstructor
+@RequestMapping("/gardener")
 public class GatewayController {
 
     private final ScheduleService scheduleService;
@@ -45,12 +45,11 @@ public class GatewayController {
     }
 
     @GetMapping("/diagnose")
-    public Diagnosis getPlantDiagnosis(String plantImageURL) {
+    public Diagnosis getPlantDiagnosis(String plantImageURL) throws UnsupportedEncodingException {
         RestTemplate restTemplate = new RestTemplate();
         return restTemplate.getForObject(
-                "https://plapp-diagnosis-service.herokuapp.com",
-                Diagnosis.class,
-                plantImageURL
+                "https://plapp-diagnosis-service.herokuapp.com/diagnose?plantImageURL=" + plantImageURL,
+                Diagnosis.class
         );
     }
 
@@ -63,7 +62,7 @@ public class GatewayController {
                         return uriBuilder.scheme("https")
                             .host("plapp-diagnosis-service.herokuapp.com")
                             .path("diagnose")
-                            .queryParam("url", URLEncoder.encode(plantImageURL, "UTF-8"))
+                            .queryParam("plantImageURL", URLEncoder.encode(plantImageURL, "UTF-8"))
                             .build();
                     } catch (UnsupportedEncodingException e) {
                         e.printStackTrace();

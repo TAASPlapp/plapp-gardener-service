@@ -4,76 +4,90 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.plapp.entities.schedules.Diagnosis;
 import com.plapp.entities.schedules.ScheduleAction;
 import com.plapp.gardenerservice.services.DiagnosisService;
+import com.plapp.gardenerservice.services.RabbitMQSender;
 import com.plapp.gardenerservice.services.ScheduleService;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpMethod;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.client.RestTemplate;
+import org.springframework.web.reactive.function.BodyInserters;
 import org.springframework.web.reactive.function.client.WebClient;
 import reactor.core.publisher.Mono;
 import javax.annotation.PostConstruct;
 import java.io.IOException;
+import java.io.UnsupportedEncodingException;
+import java.net.URLEncoder;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Map;
 
 @RestController
+@RequiredArgsConstructor
+@RequestMapping("/gardener")
 public class GatewayController {
 
-    @Autowired
-    private ScheduleService scheduleService;
-    @Autowired
-    private DiagnosisService diagnosisService;
+    private final ScheduleService scheduleService;
+    private final DiagnosisService diagnosisService;
+    private final RabbitMQSender rabbitMQSender;
 
-    private ObjectMapper objectMapper;
+    private ObjectMapper objectMapper = new ObjectMapper();
     private final List<String> possibleActions = new ArrayList<>(Arrays.asList(new String[]{"Potatura","Innaffiatura","Concimazione"}));
 
-    @PostConstruct
-    public void init(){
-        objectMapper = new ObjectMapper();
-    }
 
     /* This method is invoked whenever a user requests
      * the insertion of a new schedule (e.g. water, prune, ...)
      */
-    @PutMapping("gardener/{plantId}/schedule/add")
+    @PutMapping("/{plantId}/schedule/add")
     ScheduleAction addScheduleAction(@RequestBody ScheduleAction scheduleAction) {
         ScheduleAction newScheduleAction = scheduleService.createSchedule(scheduleAction);
         return newScheduleAction;
     }
 
-    public String getNNUri(String plantImageURL){
-        return "https://plant-info-api.herokuapp.com/cnn?="+plantImageURL;
+    @PostMapping("/diagnose")
+    public Diagnosis getPlantDiagnosis(@RequestBody Map<String, String> params) throws UnsupportedEncodingException {
+        String plantImageURL = params.get("plantImageURL");
+        System.out.println("plantImageURL: " + plantImageURL);
+
+        RestTemplate restTemplate = new RestTemplate();
+        return restTemplate.getForObject(
+                "https://plapp-diagnosis-service.herokuapp.com/diagnose?plantImageURL=" + plantImageURL,
+                Diagnosis.class
+        );
     }
 
-    @GetMapping(value = "gardener/{plantId}/diagnose")
-    public String getPlantDiagnosis(String plantImageURL, String plantId) throws InterruptedException, IOException {
-        Mono<String> result = WebClient.create()
+    @PostMapping("/{plantId}/diagnose-async")
+    public void getPlantDiagnosisAsync(@PathVariable  String plantId, @RequestBody Map<String, String> params) throws InterruptedException, IOException {
+        Mono<Diagnosis> result = WebClient.create()
                 .get()
-                .uri(getNNUri(plantImageURL))
+                .uri(uriBuilder -> uriBuilder.scheme("https")
+                    .host("plapp-diagnosis-service.herokuapp.com")
+                    .path("diagnose")
+                    .queryParam("plantImageURL", params.get("plantImageURL"))
+                    .build())
                 .retrieve()
-                .bodyToMono(String.class)
-                ;
+                .bodyToMono(Diagnosis.class);
+
         result.subscribe(diagnosis -> {
-            try {
-                System.out.println(diagnosis);
-                diagnosisService.createDiagnosis(objectMapper.readValue(diagnosis, Diagnosis.class));
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-        }); //diagnosis should be string (JSON)
-        return "Diagnosis is processing. You will receive a notification with the results ASAP.";
+            System.out.println(diagnosis);
+            diagnosis.setPlantId(plantId);
+            diagnosisService.createDiagnosis(diagnosis);
+            rabbitMQSender.sendDiagnosis(diagnosis);
+        });
     }
 
-    @GetMapping("gardener/{plantId}/schedule/remove")
-    void removeScheduleAction(long plantId){
+    @GetMapping("/{plantId}/schedule/remove")
+    void removeScheduleAction(Long plantId){
         scheduleService.deleteSchedule(plantId);
     }
 
-    @GetMapping("gardener/{plantId}/schedule/getAll")
-    List<ScheduleAction> getSchedule(long plantId){
+    @GetMapping("/{plantId}/schedule/getAll")
+    List<ScheduleAction> getSchedule(Long plantId){
         return scheduleService.findAllByPlantId(plantId);
     }
 
-    @GetMapping(value = "gardener/actions")
+    @GetMapping("/actions")
     List<String> getActions(){
         return possibleActions;
     }

@@ -4,10 +4,13 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.plapp.entities.schedules.Diagnosis;
 import com.plapp.entities.schedules.ScheduleAction;
 import com.plapp.gardenerservice.services.DiagnosisService;
+import com.plapp.gardenerservice.services.RabbitMQSender;
 import com.plapp.gardenerservice.services.ScheduleService;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpMethod;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.client.RestTemplate;
 import org.springframework.web.reactive.function.BodyInserters;
 import org.springframework.web.reactive.function.client.WebClient;
 import reactor.core.publisher.Mono;
@@ -20,33 +23,40 @@ import java.util.Arrays;
 import java.util.List;
 
 @RestController
+@RequestMapping("gardener")
+@RequiredArgsConstructor
 public class GatewayController {
 
-    @Autowired
-    private ScheduleService scheduleService;
-    @Autowired
-    private DiagnosisService diagnosisService;
+    private final ScheduleService scheduleService;
+    private final DiagnosisService diagnosisService;
+    private final RabbitMQSender rabbitMQSender;
 
-    private ObjectMapper objectMapper;
+    private ObjectMapper objectMapper = new ObjectMapper();
     private final List<String> possibleActions = new ArrayList<>(Arrays.asList(new String[]{"Potatura","Innaffiatura","Concimazione"}));
 
-    @PostConstruct
-    public void init(){
-        objectMapper = new ObjectMapper();
-    }
 
     /* This method is invoked whenever a user requests
      * the insertion of a new schedule (e.g. water, prune, ...)
      */
-    @PutMapping("gardener/{plantId}/schedule/add")
+    @PutMapping("{plantId}/schedule/add")
     ScheduleAction addScheduleAction(@RequestBody ScheduleAction scheduleAction) {
         ScheduleAction newScheduleAction = scheduleService.createSchedule(scheduleAction);
         return newScheduleAction;
     }
 
-    @GetMapping(value = "gardener/{plantId}/diagnose")
-    public String getPlantDiagnosis(String plantImageURL, String plantId) throws InterruptedException, IOException {
-        Mono<String> result = WebClient.create()
+    @GetMapping("diagnose")
+    public Diagnosis getPlantDiagnosis(String url) {
+        RestTemplate restTemplate = new RestTemplate();
+        return restTemplate.getForObject(
+                "https://plapp-diagnosis-service.herokuapp.com",
+                Diagnosis.class,
+                url
+        );
+    }
+
+    @GetMapping("{plantId}/diagnose-async")
+    public void getPlantDiagnosisAsync(@PathVariable  String plantId, String plantImageURL) throws InterruptedException, IOException {
+        Mono<Diagnosis> result = WebClient.create()
                 .get()
                 .uri(uriBuilder -> {
                     try {
@@ -61,32 +71,27 @@ public class GatewayController {
                     }
                 })
                 .retrieve()
-                .bodyToMono(String.class);
+                .bodyToMono(Diagnosis.class);
 
         result.subscribe(diagnosis -> {
-            try {
-                System.out.println(diagnosis);
-                Diagnosis plantDiagnosis = objectMapper.readValue(diagnosis, Diagnosis.class);
-                plantDiagnosis.setPlantId(plantId);
-                diagnosisService.createDiagnosis(plantDiagnosis);
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-        }); //diagnosis should be string (JSON)
-        return "Diagnosis is processing. You will receive a notification with the results ASAP.";
+            System.out.println(diagnosis);
+            diagnosis.setPlantId(plantId);
+            diagnosisService.createDiagnosis(diagnosis);
+            rabbitMQSender.sendDiagnosis(diagnosis);
+        });
     }
 
-    @GetMapping("gardener/{plantId}/schedule/remove")
+    @GetMapping("{plantId}/schedule/remove")
     void removeScheduleAction(long plantId){
         scheduleService.deleteSchedule(plantId);
     }
 
-    @GetMapping("gardener/{plantId}/schedule/getAll")
+    @GetMapping("{plantId}/schedule/getAll")
     List<ScheduleAction> getSchedule(long plantId){
         return scheduleService.findAllByPlantId(plantId);
     }
 
-    @GetMapping(value = "gardener/actions")
+    @GetMapping("actions")
     List<String> getActions(){
         return possibleActions;
     }

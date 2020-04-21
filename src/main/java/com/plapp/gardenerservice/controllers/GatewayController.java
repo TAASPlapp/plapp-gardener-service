@@ -44,7 +44,7 @@ public class GatewayController {
         return newScheduleAction;
     }
 
-    @GetMapping("/diagnose")
+    @PostMapping("/diagnose")
     public Diagnosis getPlantDiagnosis(@RequestParam String plantImageURL) throws UnsupportedEncodingException {
         RestTemplate restTemplate = new RestTemplate();
         return restTemplate.getForObject(
@@ -53,7 +53,7 @@ public class GatewayController {
         );
     }
 
-    @GetMapping("/{plantId}/diagnose-async")
+    @PostMapping("/{plantId}/diagnose-async")
     public void getPlantDiagnosisAsync(@PathVariable  String plantId, @RequestParam String plantImageURL) throws InterruptedException, IOException {
         Mono<Diagnosis> result = WebClient.create()
                 .get()

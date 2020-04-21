@@ -25,6 +25,10 @@ public class ScheduleService {
         return scheduleRepository.save(scheduleAction);
     }
 
+    public void deleteSchedule(ScheduleAction toDelete){
+        scheduleRepository.delete(toDelete);
+    }
+
     public void deleteSchedule(long plantId){
         scheduleRepository.deleteByPlantId(plantId);
     }

@@ -45,7 +45,7 @@ public class GatewayController {
     }
 
     @PostMapping("/diagnose")
-    public Diagnosis getPlantDiagnosis(@RequestParam String plantImageURL) throws UnsupportedEncodingException {
+    public Diagnosis getPlantDiagnosis(@RequestBody String plantImageURL) throws UnsupportedEncodingException {
         RestTemplate restTemplate = new RestTemplate();
         return restTemplate.getForObject(
                 "https://plapp-diagnosis-service.herokuapp.com/diagnose?plantImageURL=" + plantImageURL,
@@ -54,7 +54,7 @@ public class GatewayController {
     }
 
     @PostMapping("/{plantId}/diagnose-async")
-    public void getPlantDiagnosisAsync(@PathVariable  String plantId, @RequestParam String plantImageURL) throws InterruptedException, IOException {
+    public void getPlantDiagnosisAsync(@PathVariable  String plantId, @RequestBody String plantImageURL) throws InterruptedException, IOException {
         Mono<Diagnosis> result = WebClient.create()
                 .get()
                 .uri(uriBuilder -> uriBuilder.scheme("https")

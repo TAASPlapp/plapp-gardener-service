@@ -45,7 +45,7 @@ public class GatewayController {
     }
 
     @PostMapping("/diagnose")
-    public Diagnosis getPlantDiagnosis(@RequestBody String plantImageURL) throws UnsupportedEncodingException {
+    public Diagnosis getPlantDiagnosis(@RequestParam String plantImageURL) throws UnsupportedEncodingException {
         RestTemplate restTemplate = new RestTemplate();
         return restTemplate.getForObject(
                 "https://plapp-diagnosis-service.herokuapp.com/diagnose?plantImageURL=" + plantImageURL,

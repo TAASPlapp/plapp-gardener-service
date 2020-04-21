@@ -39,7 +39,7 @@ public class GatewayController {
     /* This method is invoked whenever a user requests
      * the insertion of a new schedule (e.g. water, prune, ...)
      */
-    @PutMapping("/{plantId}/schedule/add")
+    @PostMapping("/{plantId}/schedule/add")
     ScheduleAction addScheduleAction(@PathVariable Long plantId, @RequestBody ScheduleAction scheduleAction) {
         ScheduleAction newScheduleAction = scheduleService.createSchedule(scheduleAction);
         return newScheduleAction;

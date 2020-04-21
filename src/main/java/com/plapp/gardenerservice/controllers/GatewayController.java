@@ -21,6 +21,7 @@ import java.net.URLEncoder;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Map;
 
 @RestController
 @RequiredArgsConstructor
@@ -45,7 +46,10 @@ public class GatewayController {
     }
 
     @PostMapping("/diagnose")
-    public Diagnosis getPlantDiagnosis(@RequestParam String plantImageURL) throws UnsupportedEncodingException {
+    public Diagnosis getPlantDiagnosis(@RequestBody Map<String, String> params) throws UnsupportedEncodingException {
+        String plantImageURL = params.get("plantImageURL");
+        System.out.println("plantImageURL: " + plantImageURL);
+
         RestTemplate restTemplate = new RestTemplate();
         return restTemplate.getForObject(
                 "https://plapp-diagnosis-service.herokuapp.com/diagnose?plantImageURL=" + plantImageURL,
@@ -54,13 +58,13 @@ public class GatewayController {
     }
 
     @PostMapping("/{plantId}/diagnose-async")
-    public void getPlantDiagnosisAsync(@PathVariable  String plantId, @RequestBody String plantImageURL) throws InterruptedException, IOException {
+    public void getPlantDiagnosisAsync(@PathVariable  String plantId, @RequestBody Map<String, String> params) throws InterruptedException, IOException {
         Mono<Diagnosis> result = WebClient.create()
                 .get()
                 .uri(uriBuilder -> uriBuilder.scheme("https")
                     .host("plapp-diagnosis-service.herokuapp.com")
                     .path("diagnose")
-                    .queryParam("plantImageURL", plantImageURL)
+                    .queryParam("plantImageURL", params.get("plantImageURL"))
                     .build())
                 .retrieve()
                 .bodyToMono(Diagnosis.class);

@@ -57,18 +57,11 @@ public class GatewayController {
     public void getPlantDiagnosisAsync(@PathVariable  String plantId, String plantImageURL) throws InterruptedException, IOException {
         Mono<Diagnosis> result = WebClient.create()
                 .get()
-                .uri(uriBuilder -> {
-                    try {
-                        return uriBuilder.scheme("https")
-                            .host("plapp-diagnosis-service.herokuapp.com")
-                            .path("diagnose")
-                            .queryParam("plantImageURL", URLEncoder.encode(plantImageURL, "UTF-8"))
-                            .build();
-                    } catch (UnsupportedEncodingException e) {
-                        e.printStackTrace();
-                        return null;
-                    }
-                })
+                .uri(uriBuilder -> uriBuilder.scheme("https")
+                    .host("plapp-diagnosis-service.herokuapp.com")
+                    .path("diagnose")
+                    .queryParam("plantImageURL", plantImageURL)
+                    .build())
                 .retrieve()
                 .bodyToMono(Diagnosis.class);
 
